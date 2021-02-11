@@ -20,20 +20,20 @@
         </div>
     </nav>
     <Clientes></Clientes>
-    <Cadastro></Cadastro>
+    <CadastroCliente></CadastroCliente>
 </div>
 </template>
 
 <script>
 import Clientes from './components/Clientes.vue';
-import Cadastro from './components/Cadastro.vue';
+import CadastroCliente from './components/CadastroCliente.vue';
 
 export default {
   name: 'App',
   components: {
     Clientes,
-    Cadastro
-  }
+    CadastroCliente
+  },
 }
 </script>
 
