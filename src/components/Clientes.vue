@@ -11,7 +11,7 @@
             </thead>
             <tbody>
                 <tr>
-                <th scope="row"> {{ clientes.ID }}</th>
+                <th scope="row"> {{ clientes.id }}</th>
                 <td>{{ clientes.nome }}</td>
                 <td>{{ clientes.dataNascimento }}</td>
                 <td>{{ clientes.cep }}</td>

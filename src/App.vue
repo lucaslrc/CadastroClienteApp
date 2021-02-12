@@ -14,8 +14,10 @@
             </li>
         </ul>
     </nav>
+    <div v-for="newClientes in newCliente" :key="newClientes.id">
+      <Clientes :clientes="newCliente"/>
+    </div>
     <CadastroCliente/>
-    <Clientes :clientes="newCliente"/>
 </div>
 </template>
 
