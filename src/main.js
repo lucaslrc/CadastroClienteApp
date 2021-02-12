@@ -5,5 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'popper.js';
 import 'jquery/dist/jquery';
 import 'axios/lib/axios';
+import 'cors';
 
 createApp(App).mount('#app')

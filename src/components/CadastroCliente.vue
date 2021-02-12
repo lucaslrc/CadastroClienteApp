@@ -11,50 +11,62 @@
             <div class="modal-body">
                 <form>
                   <div class="form-group">
-                    <label for="NomeCliente">Nome</label><br>
-                    <input type="text" id="nomeCliente" placeholder="Nome completo" v-model="nome">
+                    <label for="nomeDoClienteFor">Nome</label><br>
+                    <input type="text" id="nomeDoClienteId" placeholder="Nome completo" v-model="nome"><br>
+                    <div class="alert alert-danger" role="alert" v-if="nome < 1">
+                      Campo obrigatório.
+                    </div>
                   </div>
                   <div class="form-group">
-                    <label for="DataNascimentoCliente">Data de nascimento</label><br>
-                    <input type="date" id="dataNascimento" v-model="dataNascimento">
+                    <label for="dataNascimentoDoClienteFor">Data de nascimento</label><br>
+                    <input type="date" id="dataNascimentoDoClienteId" v-model="dataNascimento">
+                    <div class="alert alert-danger" role="alert" v-if="dataNascimento.length < 7">
+                      Campo obrigatório.
+                    </div>
                   </div>
                   <div class="form-group">
-                    <label for="SexoCliente">Sexo</label><br>
-                      <select class="form-control form-control-sm" id="sexoCliente" v-model="sexo">
+                    <label for="sexoDoClienteFor">Sexo</label><br>
+                      <select class="form-control form-control-sm" id="sexoDoClienteId" v-model="sexo">
                         <option>Masculino</option>
                         <option>Feminino</option>
                         <option>Outro</option>
                       </select>
+                    <div class="alert alert-danger" role="alert" v-if="sexo < 1">
+                      Campo obrigatório.
+                    </div>
                   </div>
                   <div class="form-group">
-                    <label for="CepCliente">Cep</label><br>
-                    <input type="text" class="form-control" id="cepCliente" v-model="cep">
+                    <label for="cepDoClienteFor">Cep</label><br>
+                    <input type="text" class="form-control" id="cepDoClienteId" v-model="cep">
+                    <div class="alert alert-danger" role="alert" v-if="cep.length < 8">
+                      Campo obrigatório.
+                    </div>
                   </div>
                   <div class="form-group">
-                    <label for="DataNascimentoCliente">Endereço</label><br>
-                    <input type="text" class="form-control" id="enderecoCliente" v-model="endereco" readonly>
+                    <label for="enderecoDoClienteFor">Endereço</label><br>
+                    <input type="text" class="form-control" id="enderecoDoClienteId" v-model="endereco" readonly>
                   </div>
                   <div class="form-group">
-                    <label for="DataNascimentoCliente">Número</label><br>
-                    <input type="text" class="form-control" id="numeroCliente" v-model="numero">
+                    <label for="numeroDoClienteFor">Número</label><br>
+                    <input type="text" class="form-control" id="numeroDoClienteId" v-model="numero">
                   </div>
                   <div class="form-group">
-                    <label for="DataNascimentoCliente">Complemento</label><br>
-                    <input type="text" class="form-control" id="complementoCliente" v-model="complemento" readonly>
+                    <label for="complementoDoClienteFor">Complemento</label><br>
+                    <input type="text" class="form-control" id="complementoDoClienteId" v-model="complemento" readonly>
                   </div>
                   <div class="form-group">
-                    <label for="DataNascimentoCliente">Bairro</label><br>
-                    <input type="text" class="form-control" id="bairroCliente" v-model="bairro" readonly>
+                    <label for="bairroDoClienteFor">Bairro</label><br>
+                    <input type="text" class="form-control" id="bairroDoClienteId" v-model="bairro" readonly>
                   </div>
                   <div class="form-group">
-                    <label for="DataNascimentoCliente">Estado</label>
-                    <input type="text" class="form-control" id="estadoCliente" v-model="estado" readonly>
+                    <label for="estadoDoClienteFor">Estado</label>
+                    <input type="text" class="form-control" id="estadoDoClienteId" v-model="estado" readonly>
                   </div>
                   <div class="form-group">
-                    <label for="DataNascimentoCliente">Cidade</label>
-                    <input type="text" class="form-control" id="cidadeCliente" v-model="cidade" readonly>
+                    <label for="cidadeDoClienteFor">Cidade</label>
+                    <input type="text" class="form-control" id="cidadeDoClienteId" v-model="cidade" readonly>
                   </div>
-                  <button type="submit" class="btn btn-primary">Cadastrar</button>
+                  <button type="button" class="btn btn-primary" @click="cadastrarCliente">Cadastrar</button>
                 </form>
             </div>
           </div>
@@ -63,6 +75,7 @@
 </template>
 
 <script>
+import fetch from 'node-fetch';
 
 export default {
   name: 'CadastroCliente',
@@ -75,9 +88,22 @@ export default {
     endereco: '',
     numero: '',
     complemento: '',
-    bairo: '',
+    bairro: '',
     estado: '',
     cidade: ''
+    }
+  },
+  methods: {
+    cadastrarCliente() {
+      // let infos = [''];
+      // if (this.nome == '' || this.nome == '  ' || String.length(this.nome) < 1) {
+        
+      // }
+    },
+    buscarCep: (cep) => {
+      console.log(cep);
+      fetch('https://viacep.com.br/ws/' + cep + '/json/')
+        .then(res => console.log(res))
     }
   }
 }
